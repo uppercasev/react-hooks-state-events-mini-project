@@ -1,12 +1,24 @@
-import React from "react";
+import { React, useState } from "react";
 import Task from "./Task";
 
 function TaskList({ tasks }) {
-  console.log(tasks);
+  const [tasksToDisplay, setTasksToDisplay] = useState(tasks);
+
+  const handleDelete = (id) => {
+    setTasksToDisplay(tasksToDisplay.filter((task, index) => index !== id));
+  };
+
   return (
     <div className="tasks">
-      {tasks.map(function ({ category, text, index }) {
-        return <Task key={index} text={text} category={category} />;
+      {tasksToDisplay.map((task, index) => {
+        return (
+          <Task
+            key={index}
+            text={task.text}
+            category={task.category}
+            handleDelete={() => handleDelete(index)}
+          />
+        );
       })}
     </div>
   );
