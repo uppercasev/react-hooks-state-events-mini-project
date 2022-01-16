@@ -1,13 +1,8 @@
 import { React, useState } from "react";
 import Task from "./Task";
 
-function TaskList({ tasks }) {
-  const [tasksToDisplay, setTasksToDisplay] = useState(tasks);
-
-  const handleDelete = (id) => {
-    setTasksToDisplay(tasksToDisplay.filter((task, index) => index !== id));
-  };
-
+function TaskList({ tasksToDisplay, handleDelete }) {
+ 
   return (
     <div className="tasks">
       {tasksToDisplay.map((task, index) => {
