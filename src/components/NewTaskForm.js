@@ -15,19 +15,34 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
 
   const createTask = (event) => {
     event.preventDefault();
-    onTaskFormSubmit({text: newTask, category: newTaskCategory})
-  }
+    if (newTask === "") {
+      alert("Please enter task details.");
+    } else if (newTaskCategory === "") {
+      alert("Please select a category.");
+    } else {
+      onTaskFormSubmit({ text: newTask, category: newTaskCategory });
+    }
+  };
 
   return (
     <form className="new-task-form" onSubmit={createTask}>
       <label>
         Details
-        <input type="text" name="text" onChange={handleTextChange} value={newTask} />
+        <input
+          type="text"
+          name="text"
+          onChange={handleTextChange}
+          value={newTask}
+        />
       </label>
       <label>
         Category
-        <select name="category" onChange={handleCategorySelect} value={newTaskCategory}>
-          <option>[Select]</option>
+        <select
+          name="category"
+          onChange={handleCategorySelect}
+          value={newTaskCategory}
+        >
+          <option value="">[Select]</option>
           {options.map((option) => {
             return <option key={option}>{option}</option>;
           })}
