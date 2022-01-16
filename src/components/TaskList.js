@@ -1,11 +1,11 @@
-import { React, useState } from "react";
+import React from "react";
 import Task from "./Task";
 
-function TaskList({ tasksToDisplay, handleDelete }) {
+function TaskList({ tasks, handleDelete }) {
  
   return (
     <div className="tasks">
-      {tasksToDisplay.map((task, index) => {
+      {tasks.map((task, index) => {
         return (
           <Task
             key={index}

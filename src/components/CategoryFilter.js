@@ -8,7 +8,8 @@ function CategoryFilter({ selectedCategory, categories, handleClick }) {
       {categories.map((category) => {
         return (
           <button
-            class={category === selectedCategory ? "selected" : ""}
+            key={category}
+            className={category === selectedCategory ? "selected" : ""}
             onClick={() => handleClick(category)}
           >
             {category}
